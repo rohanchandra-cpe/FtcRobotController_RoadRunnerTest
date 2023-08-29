@@ -22,6 +22,8 @@ public class NewOpmode extends LinearOpMode {
         Pose2d startPose=new Pose2d(24,24, Math.toRadians(0.00));
 
         drive.setPoseEstimate(startPose);
+        //this line is very important
+        //this opmode works
 
         Trajectory myTrajectory = drive.trajectoryBuilder(startPose)
                 .forward(24)
