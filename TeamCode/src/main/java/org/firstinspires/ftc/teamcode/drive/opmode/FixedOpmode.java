@@ -10,24 +10,19 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
-@Config
-@Autonomous(group = "drive")
 
-public class NewOpmode extends LinearOpMode {
+@Config
+@Autonomous
+
+public class FixedOpmode extends LinearOpMode {
     @Override
 
     public void runOpMode() {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-        Pose2d startPose=new Pose2d(24,24, Math.toRadians(0.00));
-
-        drive.setPoseEstimate(startPose);
-        //this line is very important
-        //this opmode works
-
-        Trajectory myTrajectory = drive.trajectoryBuilder(startPose)
-                .forward(24)
+        Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d())
                 .strafeRight(10)
+                .forward(5)
                 .build();
 
         waitForStart();
@@ -35,6 +30,6 @@ public class NewOpmode extends LinearOpMode {
         if(isStopRequested()) return;
 
         drive.followTrajectory(myTrajectory);
-
     }
 }
+
