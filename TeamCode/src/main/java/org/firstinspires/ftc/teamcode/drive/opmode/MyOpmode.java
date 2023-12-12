@@ -20,24 +20,14 @@ public class MyOpmode extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-        Pose2d startPose=new Pose2d(24, 24, Math.toRadians(90.00));
+        Pose2d startPose=new Pose2d(24, 24, Math.toRadians(0.00));
 
         drive.setPoseEstimate(startPose);
 
         TrajectorySequence untitled0 = drive.trajectorySequenceBuilder(startPose)
-                .splineTo(new Vector2d(24, 48), Math.toRadians(0.0))
-                .splineTo(new Vector2d(48, 48), Math.toRadians(0.0))
+                .splineToConstantHeading(new Vector2d(24, 48), Math.toRadians(0.0))
+                .splineToConstantHeading(new Vector2d(48, 48), Math.toRadians(0.0))
                 .build();
-
-
-
-
-
-
-
-
-
-
 
         waitForStart();
 
